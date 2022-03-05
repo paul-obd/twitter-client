@@ -1,0 +1,37 @@
+<div class="center">
+    <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
+    <div class="pick-div">
+        <button *ngIf="!imageSrc" class="pick-btn" mat-raised-button (click)="imagePicker.click()">Pick Image
+            (optional)</button>
+        <button *ngIf="imageSrc" class="pick-btn" mat-raised-button (click)="imagePicker.click()">Replace Image</button>
+        <button *ngIf="imageSrc" class="pick-btn" mat-raised-button color="warn" (click)="removeImage()">Remove
+            Image</button>
+    </div>
+    <form class="flex-column" [formGroup]="tweetForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="img" *ngIf="imageSrc" [ngStyle]="{ 'background-image': 'url(' + imageSrc + ')'}"></div>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Title</mat-label>
+                <input type="text" formControlName="title" matInput>
+
+            </mat-form-field>
+        </p>
+
+        <input #imagePicker type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Type a Tweet</mat-label>
+                <!-- <input type="text" formControlName="content" matInput> -->
+                <textarea formControlName="content" matInput cols="30" rows="10"></textarea>
+            </mat-form-field>
+        </p>
+
+
+
+        <button *ngIf="tweetForm.valid && notclicked" mat-raised-button color="primary" type="submit">Tweet it</button>
+        <button disabled *ngIf="!tweetForm.valid" mat-raised-button color="primary">Tweet it</button>
+        <button disabled *ngIf="!notclicked" mat-raised-button color="primary">Tweet it</button>
+    </form>
+
+</div>

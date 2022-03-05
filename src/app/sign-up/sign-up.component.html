@@ -1,0 +1,33 @@
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter E-mail</mat-label> 
+                <input type="email" formControlName="email" matInput placeholder="ex: example@gmail.com">
+             
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter UserName</mat-label>
+                <input formControlName="userName" matInput placeholder="min length 2">
+            
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Password</mat-label>
+                <input type="password" formControlName="password" matInput placeholder="min length 6">
+            
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Re-enter Password</mat-label>
+                    <input type="password" formControlName="rePassword" matInput placeholder="must match your password">
+           
+            </mat-form-field>
+        </p>
+        <button type="submit" color="primary" mat-raised-button>SignUp</button>
+        <h3>Already a member? <a [routerLink]="[ '/login' ]"> LogIn</a></h3>
+    </form>

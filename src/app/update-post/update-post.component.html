@@ -1,0 +1,24 @@
+<form [formGroup]="tweetForm" (ngSubmit)="onSubmit()" novalidate>
+    <table>
+        <tr>
+            <input type="text" formControlName="title">
+        </tr>
+        <tr *ngIf="tweetImg !== null">
+            <img [src]="PORT + tweetImg" alt="">
+        </tr>
+        <tr *ngIf="tweetImg !== null">
+            <h1>replace image</h1>
+            <input type="file" (change)="onFileSelected($event)" placeholder="Change image"  accept="image/*">
+        </tr>
+        <tr *ngIf="tweetImg == null">
+            <h1>add image</h1>
+            <input type="file" (change)="onFileSelected($event)" placeholder="Add image"  accept="image/*">
+        </tr>
+        <tr>
+            <input type="text" formControlName="content">
+        </tr>
+        <tr>
+            <button type="submit">Tweet it</button>
+        </tr>
+    </table>
+</form>
