@@ -29,10 +29,14 @@ export class AuthService {
   }
 
   getProfile(){
-    this.loadToken()
+    this.loadTokenAndUser()
     // let headers = new Headers()
     // headers.append('Authorization', this.authToken)
     return this.http.get(this.PORT + 'user/profile', {headers: {'Authorization': this.authToken}})
+  }
+
+  getOneUser(userId){
+    return this.http.get(this.PORT +`user/one-user/${userId}`)
   }
 
   storeAndSetAuthData(user, token){
@@ -42,9 +46,11 @@ export class AuthService {
     this.user = user 
   }
 
-  loadToken(){
+  loadTokenAndUser(){
     const token = localStorage.getItem('id_token')
+    const user = localStorage.getItem('user')
     this.authToken = token
+    this.user = JSON.parse(user)
   }
 
   loggedIn(){

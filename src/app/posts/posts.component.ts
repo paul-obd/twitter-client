@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Tweet } from '../models/tweet.model';
+import { AuthService } from '../services/auth.service';
+import { TweetService } from '../services/tweet.service';
 
 @Component({
   selector: 'app-posts',
@@ -8,9 +11,25 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  tweets: any[] = []
+
+  constructor(private tweetService: TweetService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.getAllTweets()
+  }
+
+  getAllTweets(){
+    this.tweetService.getTweets().subscribe(
+      (res: any[])=>{
+      //  this.tweets = res
+        res.forEach(tweet => {
+          
+          this.tweets.push(tweet)
+         
+         
+        });
+    })
   }
 
 }

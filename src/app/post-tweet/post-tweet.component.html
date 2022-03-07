@@ -1,5 +1,6 @@
+<mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
 <div class="center">
-    <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
+   
     <div class="pick-div">
         <button *ngIf="!imageSrc" class="pick-btn" mat-raised-button (click)="imagePicker.click()">Pick Image
             (optional)</button>
@@ -22,7 +23,7 @@
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>Type a Tweet</mat-label>
-                <!-- <input type="text" formControlName="content" matInput> -->
+                
                 <textarea formControlName="content" matInput cols="30" rows="10"></textarea>
             </mat-form-field>
         </p>

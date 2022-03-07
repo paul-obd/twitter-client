@@ -1,0 +1,28 @@
+.example-card {
+     max-width: 400px;
+   
+    margin-top: 1%;
+}
+.img{
+    width: 100%;
+    margin-top: 7.5% !important;
+    margin-bottom: 2%;
+    height: 30vh!important;
+    background-repeat:no-repeat;
+    background-size: contain ;
+    background-position: center;
+}
+
+h1{
+    font-weight: bold;
+    color: rgb(87, 84, 84);
+}
+h2{
+    color: rgb(87, 84, 84);
+}
+
+@media only screen and (min-width: 1080px) {
+    .example-card {
+        width: 50vh;
+    }
+} 

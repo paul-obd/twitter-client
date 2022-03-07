@@ -1,7 +1,11 @@
-<h3>
-    {{ userEmail}}
-</h3>
-<h3>
-    {{userName}}
-</h3>
+<div class="center-specific">
+    <h3>
+        {{ userEmail}}
+    </h3>
+    <h3>
+        {{userName}}
+    </h3>
 
+    <app-post *ngFor="let tweet of userPosts" [creatorUsername]="userId" [imgUrl]="tweet.imageUrl"
+        [content]="tweet.content" [title]="tweet.title"></app-post>
+</div>

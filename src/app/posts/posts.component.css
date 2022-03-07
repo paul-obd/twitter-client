@@ -1,0 +1,14 @@
+.center-specific{
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+    app-post{
+        width: 100%;
+    }
+}

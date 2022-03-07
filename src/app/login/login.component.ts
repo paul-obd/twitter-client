@@ -13,6 +13,8 @@ import { SnackbarService } from '../services/snackbar.service';
 export class LoginComponent implements OnInit {
 
   logInForm: FormGroup
+  emailOrPassword: string
+  password: string
 
   constructor(private route: Router,private authService: AuthService, private formBuilder: FormBuilder, private snackbar: SnackbarService) { }
 
@@ -29,13 +31,19 @@ export class LoginComponent implements OnInit {
   }
 
   isEmail() {
-    this.logInForm.get('emailOrUsername').setValidators(Validators.email)
+    this.emailOrPassword = this.logInForm.get('emailOrUsername').value
+    this.password =  this.logInForm.get('logInpassword').value
+    this.logInForm = this.formBuilder.group({
+      emailOrUsername: [this.emailOrPassword, [Validators.required, Validators.email]],
+      logInpassword: [this.password, [Validators.required]]
+    })
   }
 
-  onLoginSubmit() {
+   onLoginSubmit() {
     this.isEmail()
     let user;
     if (this.logInForm.get('emailOrUsername').valid) {
+      console.log('nlaabet')
       user = new User()
       user.email = this.logInForm.get('emailOrUsername').value
       user.password = this.logInForm.get('logInpassword').value
@@ -52,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.authService.storeAndSetAuthData(res.user, res.token)
       this.snackbar.openSuccessSnackbar('Logged in successfully', "Ok")
       
-      this.route.navigate(['/profile'])
+      this.route.navigate(['/home'])
 
     },
       (err)=>{

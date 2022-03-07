@@ -1,1 +1,8 @@
-<p>posts works!</p>
+<div class="center-specific">
+    <app-post *ngFor="let tweet of tweets" 
+    [creatorUsername]="tweet.creator"
+    [imgUrl]="tweet.imageUrl"
+    [content]="tweet.content"
+    [title]="tweet.title"
+   ></app-post>
+</div>

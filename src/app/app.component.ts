@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
     if(!this.authservice.loggedIn()){
-      this.navigateToProfile()
+      this.navigateToHome()
     }else{
       this.navigateToLogin()
 
@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
   
   navigateToProfile(){
     this.rout.navigate(['/profile'])
+  }
+
+  navigateToHome(){
+    this.rout.navigate(['/home'])
   }
 
 

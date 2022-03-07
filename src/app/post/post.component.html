@@ -1,1 +1,18 @@
-<p>post works!</p>
+
+    <mat-card class="example-card">
+        <h1>{{creatorUsername}}</h1>
+        <!-- <mat-card-header>
+            <mat-card-title>{{creatorUsername}}</mat-card-title>
+        </mat-card-header> -->
+        <mat-divider></mat-divider>
+        <div class="img" *ngIf="imgUrl" [ngStyle]="{ 'background-image': 'url(' + PORT + imgUrl + ')'}"></div>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h2>{{title}}.</h2>
+            <p>{{content}}.</p>
+        </mat-card-content>
+        <mat-card-actions *ngIf="creatorUsername === currentUserName">
+            <button mat-button>Edit</button>
+            <button mat-button>Delete</button>
+        </mat-card-actions>
+    </mat-card>
