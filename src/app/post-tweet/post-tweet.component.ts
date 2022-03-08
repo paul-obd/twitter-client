@@ -1,9 +1,10 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tweet } from '../models/tweet.model';
 import { SnackbarService } from '../services/snackbar.service';
+import { ToolbarService } from '../services/toolbar.service';
 import { TweetService } from '../services/tweet.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { TweetService } from '../services/tweet.service';
   templateUrl: './post-tweet.component.html',
   styleUrls: ['./post-tweet.component.css']
 })
-export class PostTweetComponent implements OnInit {
+export class PostTweetComponent implements OnInit, OnDestroy {
 
 
   tweetForm: FormGroup;
@@ -19,10 +20,15 @@ export class PostTweetComponent implements OnInit {
   uploadProgress: boolean = false
   notclicked: boolean = true
 
-  constructor(private route: Router,private formBuilder: FormBuilder, private tweetService: TweetService, private snackBar: SnackbarService) { }
+  constructor(private route: Router,private formBuilder: FormBuilder, private tweetService: TweetService, private snackBar: SnackbarService, private toolbarService: ToolbarService) { }
+  ngOnDestroy(): void {
+    this.toolbarService.inAddTweet = false
+  }
 
   ngOnInit(): void {
+    this.toolbarService.inAddTweet = true
     this.tweetFormInit()
+    
   }
 
   tweetFormInit() {

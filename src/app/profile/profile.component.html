@@ -6,6 +6,7 @@
         {{userName}}
     </h3>
 
-    <app-post *ngFor="let tweet of userPosts" [creatorUsername]="userId" [imgUrl]="tweet.imageUrl"
+    <app-post *ngFor="let tweet of authService.userPosts"  [id]="tweet._id"
+     [creatorUsername]="userId" [imgUrl]="tweet.imageUrl"
         [content]="tweet.content" [title]="tweet.title"></app-post>
 </div>

@@ -1,7 +1,10 @@
 <mat-toolbar color="primary">
+    <mat-icon (click)="goBack()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome">arrow_back</mat-icon>
     <span>Twitter From AliExpress</span>
     <span class="example-spacer"></span>
     
-    <mat-icon (click)="navigateToProfile()" class="example-icon" aria-hidden="false">account_circle</mat-icon>
-    <mat-icon (click)="navigateToAddTweet()" class="example-icon" aria-hidden="false">add </mat-icon>
+
+    <mat-icon (click)="navigateToHome()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome">home</mat-icon>
+    <mat-icon (click)="navigateToProfile()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inProfile">account_circle</mat-icon>
+    <mat-icon (click)="navigateToAddTweet()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inAddTweet">add</mat-icon>
 </mat-toolbar>

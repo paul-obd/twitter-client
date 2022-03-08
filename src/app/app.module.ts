@@ -23,6 +23,7 @@ import { MaterialModule } from './material/material.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { LogInAuthGuardService } from './guards/login-auth-guard';
+import { ToolbarService } from './services/toolbar.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { LogInAuthGuardService } from './guards/login-auth-guard';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [TweetService, AuthService, AuthGuardService,LogInAuthGuardService ],
+  providers: [TweetService, AuthService, AuthGuardService,LogInAuthGuardService, ToolbarService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

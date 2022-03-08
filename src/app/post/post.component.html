@@ -12,7 +12,7 @@
             <p>{{content}}.</p>
         </mat-card-content>
         <mat-card-actions *ngIf="creatorUsername === currentUserName">
-            <button mat-button>Edit</button>
-            <button mat-button>Delete</button>
+            <button mat-button (click)="editTweet()">Edit</button>
+            <button mat-button (click)="deleteTweet()">Delete</button>
         </mat-card-actions>
     </mat-card>

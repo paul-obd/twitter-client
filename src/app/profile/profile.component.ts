@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Tweet } from '../models/tweet.model';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 import { SnackbarService } from '../services/snackbar.service';
+import { ToolbarService } from '../services/toolbar.service';
 import { TweetService } from '../services/tweet.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TweetService } from '../services/tweet.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, AfterViewInit {
+export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   userEmail: string;
@@ -22,19 +23,28 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
 
 
-  constructor(private authService: AuthService,private tweetService: TweetService, private snackbar: SnackbarService) { }
+  
+  constructor(public authService: AuthService,private tweetService: TweetService, private snackbar: SnackbarService, private toolbarService: ToolbarService) { }
+
+
+  ngOnDestroy(): void {
+    this.toolbarService.inProfile = false
+  }
+
   ngAfterViewInit(): void {
     this.getProfile()
   }
 
   ngOnInit(): void {
+    this.toolbarService.inProfile = true
 
   }
 
   getProfile() {
     this.authService.getProfile().subscribe(
       (user: User) => {
-        console.log(user.posts)
+        this.authService.userPosts = []
+
         this.userEmail = user.email
         this.userName = user.userName
         this.userId = user._id
@@ -44,9 +54,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
         user.posts.forEach(post=> {
           this.tweetService.getOneTweet(post).subscribe((tweet: Tweet)=>{
-            
-            this.userPosts.push(tweet)
-
+         
+              this.authService.userPosts.push(tweet)
+          
           })
           
         });

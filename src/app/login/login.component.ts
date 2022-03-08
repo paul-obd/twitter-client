@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
     this.isEmail()
     let user;
     if (this.logInForm.get('emailOrUsername').valid) {
-      console.log('nlaabet')
       user = new User()
       user.email = this.logInForm.get('emailOrUsername').value
       user.password = this.logInForm.get('logInpassword').value

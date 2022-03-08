@@ -1,0 +1,19 @@
+.img{
+    width: 80%;
+    height: 30vh!important;
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.pick-btn{
+    margin-bottom: 6%;
+  
+}
+
+.pick-div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+}
+

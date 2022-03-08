@@ -15,6 +15,7 @@ export class AuthService {
   authToken: any
   user: any
   
+  userPosts: any[] = []
 
   constructor(private http: HttpClient) { }
 

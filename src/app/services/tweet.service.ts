@@ -39,6 +39,11 @@ export class TweetService {
 
   }
 
+  deletePost(userId){
+    console.log('from confirm')
+    return this.http.delete(this.PORT+ `posts/delete-post/${userId}`, {headers: {'Authorization': this.authService.authToken}})
+  }
+
 
   updatePost(tweet: Tweet) {
     const formData = new FormData();
@@ -55,10 +60,17 @@ export class TweetService {
     {
       formData.append('image', tweet.image);
     }
-      formData.append('title', tweet.title);
-      formData.append('content', tweet.content);
+    else if(!tweet.imageUrl && !tweet.image && tweet.removedImg){
+      formData.append('removedImg', tweet.removedImg);
+    }
+
+    formData.append('title', tweet.title);
+    formData.append('content', tweet.content);
      
 
-    return this.http.put(this.PORT + 'posts/put-post/' + tweet._id, formData, {headers: {'Authorization': this.authService.authToken}})
+    return this.http.put(this.PORT + 'posts/put-post/' + tweet._id, formData, {
+      reportProgress: true,
+      observe: 'events',
+      headers: {'Authorization': this.authService.authToken}})
   }
 }

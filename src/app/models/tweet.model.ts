@@ -5,4 +5,5 @@ export class Tweet{
     imageUrl?: string
     content: string
     creator: string 
+    removedImg?: string
 }

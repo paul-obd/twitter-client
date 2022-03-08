@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToolbarService } from '../services/toolbar.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,9 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, public toolbarService: ToolbarService, private location: Location) { }
 
   ngOnInit(): void {
+  }
+
+
+  goBack(){
+    this.location.back()
+  }
+
+  navigateToHome(){
+    this.route.navigate(['/home'])
   }
 
   navigateToAddTweet(){
