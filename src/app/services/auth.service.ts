@@ -21,11 +21,16 @@ export class AuthService {
 
 
   signUp(user){
-   return this.http.post(this.PORT + 'user/signup', user)
+   return this.http.post(this.PORT + 'user/signup', user, {
+    reportProgress: true,
+    observe: 'events'})
   }
 
   logIn(user){
-   return this.http.post(this.PORT + 'user/login', user)
+   return this.http.post(this.PORT + 'user/login', user, {
+    reportProgress: true,
+    observe: 'events'}
+    )
 
   }
 

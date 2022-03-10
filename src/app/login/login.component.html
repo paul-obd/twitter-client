@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
 <form [formGroup]="logInForm" (ngSubmit)="onLoginSubmit()">
     <p>
         <mat-form-field appearance="outline">
@@ -15,7 +16,9 @@
         </mat-form-field>
     </p>
 
-    <button type="submit" color="primary" mat-raised-button>LogIn</button>
+    <button type="submit" color="primary" *ngIf="logInForm.valid && !clicked" mat-raised-button>LogIn</button>
+    <button disabled color="primary" *ngIf="!logInForm.valid " mat-raised-button>LogIn</button>
+    <button disabled color="primary" *ngIf="clicked" mat-raised-button>LogIn</button>
     
     <h3>Don't have an account? <a [routerLink]="[ '/signup' ]"> SignUp</a></h3>
    

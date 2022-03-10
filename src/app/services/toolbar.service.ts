@@ -9,6 +9,7 @@ export class ToolbarService {
   inProfile: boolean = false
   inAddTweet: boolean = false
   inUpdateTweet: boolean = false
+  inLogInOrSignUp: boolean = false
 
 
   constructor() { }

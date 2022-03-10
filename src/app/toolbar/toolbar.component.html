@@ -1,10 +1,15 @@
 <mat-toolbar color="primary">
-    <mat-icon (click)="goBack()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome">arrow_back</mat-icon>
+    <mat-icon (click)="goBack()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome && !toolbarService.inLogInOrSignUp">arrow_back
+    </mat-icon>
     <span>Twitter From AliExpress</span>
     <span class="example-spacer"></span>
-    
 
-    <mat-icon (click)="navigateToHome()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome">home</mat-icon>
-    <mat-icon (click)="navigateToProfile()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inProfile">account_circle</mat-icon>
-    <mat-icon (click)="navigateToAddTweet()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inAddTweet">add</mat-icon>
+    <div class="tabs" *ngIf="!toolbarService.inLogInOrSignUp">
+        <mat-icon class="tab" (click)="navigateToHome()" class="example-icon" aria-hidden="false"
+            [ngClass]="{'active-tab': toolbarService.inHome}">home</mat-icon>
+        <mat-icon class="tab" (click)="navigateToProfile()" class="example-icon" aria-hidden="false"
+            [ngClass]="{'active-tab': toolbarService.inProfile}">account_circle</mat-icon>
+        <mat-icon class="tab" (click)="navigateToAddTweet()" class="example-icon" aria-hidden="false"
+            [ngClass]="{'active-tab': toolbarService.inAddTweet}">add</mat-icon>
+    </div>
 </mat-toolbar>
