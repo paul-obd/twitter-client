@@ -25,3 +25,16 @@
     width: 30%  !important;
    }
 }
+
+@media screen and (max-width: 380px) {
+
+  span{
+    font-size: medium;
+  }
+}
+@media screen and (max-width: 330px) {
+
+  span{
+    font-size: small;
+  }
+}

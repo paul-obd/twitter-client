@@ -40,7 +40,7 @@ export class TweetService {
   }
 
   deletePost(userId){
-    console.log('from confirm')
+    
     return this.http.delete(this.PORT+ `posts/delete-post/${userId}`, {headers: {'Authorization': this.authService.authToken}})
   }
 

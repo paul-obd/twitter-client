@@ -37,6 +37,7 @@ export class UpdatePostComponent implements OnInit {
     this.tweetId = this.activatedRoute.snapshot.params.id
     this.tweetService.getOneTweet(this.tweetId).subscribe(
       (res: Tweet) => {
+        
         if (res.imageUrl) {
           this.tweetImg = res.imageUrl
         }

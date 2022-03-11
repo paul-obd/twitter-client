@@ -1,7 +1,7 @@
 <div class="center-specific">
     <app-post *ngFor="let tweet of tweets" 
     [id]="tweet._id"
-    [creatorUsername]="tweet.creator"
+    [creatorUsername]="tweet.creator.userName"
     [imgUrl]="tweet.imageUrl"
     [content]="tweet.content"
     [title]="tweet.title"

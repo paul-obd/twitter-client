@@ -53,11 +53,8 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
         this.currentUserName = this.authService.user.userName
 
         user.posts.forEach(post=> {
-          this.tweetService.getOneTweet(post).subscribe((tweet: Tweet)=>{
-         
-              this.authService.userPosts.push(tweet)
           
-          })
+          this.authService.userPosts.push(post)
           
         });
 

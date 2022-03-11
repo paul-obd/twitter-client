@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCreatorUserName()
-    this.getUserOfaPost()
+   // this.getUserOfaPost()
   }
 
   getCreatorUserName(){
@@ -43,7 +43,7 @@ export class PostComponent implements OnInit {
   deleteTweet(){
     if(confirm('Are you sure you want to delete this tweet?'))
     {
-      console.log('from confirm')
+      
       this.tweetService.deletePost(this.id).subscribe((res:{message, post})=>{
         this.getProfile()
         this.snackBar.openSuccessSnackbar(res.message, 'Ok')
@@ -84,15 +84,8 @@ export class PostComponent implements OnInit {
         this.authService.userPosts = []
 
         user.posts.forEach(post=> {
-          this.tweetService.getOneTweet(post).subscribe((tweet: Tweet)=>{
-            
-            //this.userPosts.push(tweet)
-             
-              this.authService.userPosts.push(tweet)
-            
-              
-          
-          })
+
+          this.authService.userPosts.push(post)
           
         });
 

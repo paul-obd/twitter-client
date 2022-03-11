@@ -12,6 +12,16 @@
     background-size: contain ;
     background-position: center;
 }
+::ng-deep .mat-icon-button .mat-button-wrapper>*{
+   vertical-align: top !important;
+   margin-top: 0%;
+}
+
+.card-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 h1{
     font-weight: bold;
@@ -20,6 +30,16 @@ h1{
 h2{
     color: rgb(87, 84, 84);
 }
+
+.edit{
+    color: rgb(48, 155, 190);
+}
+.delete{
+    color: rgb(255, 62, 62);
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
 
 @media only screen and (min-width: 1080px) {
     .example-card {

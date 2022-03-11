@@ -31,9 +31,9 @@
 
 
 
-        <button *ngIf="tweetForm.get('title').valid && tweetForm.get('content').valid && notclicked" mat-raised-button color="primary" type="submit">Tweet it</button>
-        <button disabled *ngIf="!tweetForm.get('title').valid && !tweetForm.get('content').valid" mat-raised-button color="primary">Tweet it</button>
-        <button disabled *ngIf="!notclicked" mat-raised-button color="primary">Tweet it</button>
+        <button *ngIf="tweetForm.get('title').valid && tweetForm.get('content').valid && notclicked" mat-raised-button color="primary" type="submit">Edit tweet</button>
+        <button disabled *ngIf="!tweetForm.get('title').valid && !tweetForm.get('content').valid" mat-raised-button color="primary">Edit tweet</button>
+        <button disabled *ngIf="!notclicked" mat-raised-button color="primary">Edit tweet</button>
     </form>
 
 </div>

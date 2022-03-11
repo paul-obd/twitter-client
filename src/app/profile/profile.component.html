@@ -1,12 +1,20 @@
 <div class="center-specific">
-    <h3>
-        {{ userEmail}}
-    </h3>
-    <h3>
-        {{userName}}
-    </h3>
+    <div class="profile-header">
+        <div class="details">
+            <h3 class="userName">
+                {{userName}}
+            </h3>
+            <h3 class="userEmail">
+                {{userEmail}}
+            </h3>
+        </div>
+        <div class="qr">
 
-    <app-post *ngFor="let tweet of authService.userPosts"  [id]="tweet._id"
-     [creatorUsername]="userId" [imgUrl]="tweet.imageUrl"
-        [content]="tweet.content" [title]="tweet.title"></app-post>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="posts">
+        <app-post *ngFor="let tweet of authService.userPosts" [id]="tweet._id" [creatorUsername]="userName"
+            [imgUrl]="tweet.imageUrl" [content]="tweet.content" [title]="tweet.title"></app-post>
+    </div>
 </div>

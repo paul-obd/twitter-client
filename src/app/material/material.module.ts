@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu';
 
 let MaterialComponents = [
   MatButtonModule,
@@ -19,6 +20,7 @@ let MaterialComponents = [
   MatProgressBarModule,
   MatCardModule,
   MatDividerModule,
+  MatMenuModule
  
 ];
 

@@ -1,18 +1,30 @@
-
-    <mat-card class="example-card">
+<mat-card class="example-card">
+    <div class="card-header">
         <h1>{{creatorUsername}}</h1>
-        <!-- <mat-card-header>
-            <mat-card-title>{{creatorUsername}}</mat-card-title>
-        </mat-card-header> -->
-        <mat-divider></mat-divider>
-        <div class="img" *ngIf="imgUrl" [ngStyle]="{ 'background-image': 'url(' + PORT + imgUrl + ')'}"></div>
-        <mat-divider></mat-divider>
-        <mat-card-content>
-            <h2>{{title}}.</h2>
-            <p>{{content}}.</p>
-        </mat-card-content>
-        <mat-card-actions *ngIf="creatorUsername === currentUserName">
-            <button mat-button (click)="editTweet()">Edit</button>
-            <button mat-button (click)="deleteTweet()">Delete</button>
-        </mat-card-actions>
-    </mat-card>
+
+        <span class="example-spacer"></span>
+
+        <button *ngIf="creatorUsername === currentUserName" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button (click)="editTweet()" mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button (click)="deleteTweet()" mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+        </mat-menu>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="img" *ngIf="imgUrl" [ngStyle]="{ 'background-image': 'url(' + PORT + imgUrl + ')'}"></div>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <h2>{{title}}.</h2>
+        <p>{{content}}.</p>
+    </mat-card-content>
+
+</mat-card>
