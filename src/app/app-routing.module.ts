@@ -8,6 +8,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInAuthGuardService } from './guards/login-auth-guard';
 import { PostTweetComponent } from './post-tweet/post-tweet.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LogInAuthGuardService]},
@@ -16,7 +18,10 @@ const routes: Routes = [
   {path: 'add-tweet', component: PostTweetComponent, canActivate: [AuthGuardService]},
   {path: 'update-post/:id', component: UpdatePostComponent, canActivate: [AuthGuardService]},
   {path: 'signup', component: SignUpComponent},
- // {path: '*', component: LoginComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'reset-password/:id/:token', component: ResetPasswordComponent},
+  {path: '*', component: LoginComponent, canActivate:[LogInAuthGuardService]},
+
 
 ];
 

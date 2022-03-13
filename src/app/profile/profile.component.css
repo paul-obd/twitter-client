@@ -26,14 +26,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
 @media screen and (max-width: 1080px) {
     .userName{
-        font-size: 5vh;
+        font-size: 4vh;
     }
+
+    app-post{
+        
+        min-width: 400px;
+        max-width: 400px;
+    }
+    
 
 
 }
+@media screen and (max-width: 400px) {
+  
 
+    app-post{
+        
+        width: 100%;
+    }
+    
+
+
+}

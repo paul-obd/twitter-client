@@ -22,7 +22,8 @@ export class PostsComponent implements OnInit {
   getAllTweets(){
     this.tweetService.getTweets().subscribe(
       (res: any[])=>{
-       this.tweets = res       
+       this.tweets = res   
+          
       })
   }
 

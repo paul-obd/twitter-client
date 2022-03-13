@@ -24,6 +24,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { LogInAuthGuardService } from './guards/login-auth-guard';
 import { ToolbarService } from './services/toolbar.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ToolbarService } from './services/toolbar.service';
     PostComponent,
     ProfileComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+   
     this.hideToolbarTabs()
     this.initSignUpForm()
     

@@ -4,7 +4,7 @@
     <span>Twitter From AliExpress</span>
     <span class="example-spacer"></span>
 
-    <div class="tabs" *ngIf="!toolbarService.inLogInOrSignUp">
+    <div class="tabs" *ngIf="!toolbarService.inLogInOrSignUp && !toolbarService.inForgotPassword">
         <mat-icon class="tab" (click)="navigateToHome()" class="example-icon" aria-hidden="false"
             [ngClass]="{'active-tab': toolbarService.inHome}">home</mat-icon>
         <mat-icon class="tab" (click)="navigateToProfile()" class="example-icon" aria-hidden="false"

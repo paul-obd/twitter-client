@@ -10,6 +10,7 @@ export class ToolbarService {
   inAddTweet: boolean = false
   inUpdateTweet: boolean = false
   inLogInOrSignUp: boolean = false
+  inForgotPassword: boolean = false
 
 
   constructor() { }

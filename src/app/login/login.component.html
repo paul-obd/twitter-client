@@ -2,9 +2,9 @@
 <form [formGroup]="logInForm" (ngSubmit)="onLoginSubmit()">
     <p>
         <mat-form-field appearance="outline">
-         
+
             <mat-label>Enter E-mail or Username</mat-label>
-            <input type="text" formControlName="emailOrUsername" matInput placeholder="ex: example@gmail.com">
+            <input type="text" formControlName="emailOrUsername" matInput placeholder="ex: example@example.com">
 
         </mat-form-field>
     </p>
@@ -19,7 +19,9 @@
     <button type="submit" color="primary" *ngIf="logInForm.valid && !clicked" mat-raised-button>LogIn</button>
     <button disabled color="primary" *ngIf="!logInForm.valid " mat-raised-button>LogIn</button>
     <button disabled color="primary" *ngIf="clicked" mat-raised-button>LogIn</button>
-    
-    <h3>Don't have an account? <a [routerLink]="[ '/signup' ]"> SignUp</a></h3>
-   
+
+    <div class="links">
+        <a [routerLink]="[ '/forgot-password' ]" class="forgot-password">Forgot Password</a>
+        <h3>Don't have an account? <a [routerLink]="[ '/signup' ]"> SignUp</a></h3>
+    </div>
 </form>
