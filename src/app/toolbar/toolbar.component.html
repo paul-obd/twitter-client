@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
-    <mat-icon (click)="goBack()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome && !toolbarService.inLogInOrSignUp">arrow_back
+    <mat-icon (click)="goBack()" class="example-icon" aria-hidden="false" *ngIf="!toolbarService.inHome && !toolbarService.inLogInOrSignUpOrConfirmEmail">arrow_back
     </mat-icon>
     <span>Twitter From AliExpress</span>
     <span class="example-spacer"></span>
 
-    <div class="tabs" *ngIf="!toolbarService.inLogInOrSignUp && !toolbarService.inForgotPassword">
+    <div class="tabs" *ngIf="!toolbarService.inLogInOrSignUpOrConfirmEmail && !toolbarService.inForgotPassword">
         <mat-icon class="tab" (click)="navigateToHome()" class="example-icon" aria-hidden="false"
             [ngClass]="{'active-tab': toolbarService.inHome}">home</mat-icon>
         <mat-icon class="tab" (click)="navigateToProfile()" class="example-icon" aria-hidden="false"

@@ -31,6 +31,14 @@ export class ForgotPasswordService {
      } )
   }
 
+  getToken(token){
+    return this.http.get(this.PORT + 'reset-password-token/one-token/' + token )
+  }
+
+  addToken(token){
+    return this.http.post(this.PORT + 'reset-password-token/add-token', {token: token})
+  }
+
   isToResetPassword(){
     if(this.route.url == '/reset-password/:id/:token'){
      this.id =  this.activatedRoute.snapshot.params.id
@@ -45,7 +53,6 @@ export class ForgotPasswordService {
 
   isTokenValid(token){
     const helper = new JwtHelperService();
-    console.log('hlper')
     return helper.isTokenExpired(token);
   }
 }

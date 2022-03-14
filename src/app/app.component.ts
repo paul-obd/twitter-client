@@ -15,14 +15,11 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log(this.rout.url)
+  
     if(!this.authservice.loggedIn()){
       this.navigateToHome()
     }
-    // else{
-    //   this.navigateToLogin()
 
-    // }
     
     
   }
@@ -39,9 +36,7 @@ export class AppComponent implements OnInit {
     this.rout.navigate(['/home'])
   }
 
-  // navigateToResetPassword(){
-  //   this.rout.navigate(['/reset-password'], this.forgotPasswordService.id, this.forgotPasswordService.token)
-  // }
+
 
 
 }

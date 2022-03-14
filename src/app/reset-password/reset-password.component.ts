@@ -23,11 +23,11 @@ export class ResetPasswordComponent implements OnInit , OnDestroy{
 
   constructor(private authService: AuthService,private forgotPasswordService: ForgotPasswordService,private formBuilder: FormBuilder, private route: ActivatedRoute, private snackBar: SnackbarService, private navRoute: Router, private toolbarService: ToolbarService) { }
   ngOnDestroy(): void {
-    this.toolbarService.inLogInOrSignUp = false
+    this.toolbarService.inLogInOrSignUpOrConfirmEmail = false
   }
 
   ngOnInit(): void {
-    this.toolbarService.inLogInOrSignUp = true
+    this.toolbarService.inLogInOrSignUpOrConfirmEmail = true
     this.initResetPasswordForm()
 
     if(this.isTokenValid()){
@@ -44,16 +44,31 @@ export class ResetPasswordComponent implements OnInit , OnDestroy{
 
   isTokenValid(){
     this.token = this.route.snapshot.params.token
-   
-    if(!this.forgotPasswordService.isTokenValid(this.token)){
+
+    return this.forgotPasswordService.getToken(this.token).subscribe(
+      (res: {message, available})=>{
+        if(res.available){
+          if(!this.forgotPasswordService.isTokenValid(this.token)){
      
-      this.tokenIsValid = true
-      return true
-    }else{
+            this.tokenIsValid = true
+            return true
+          }else{
+         
+            this.tokenIsValid = false
+            return false
+          }
+        }
+      },
+
+      (err)=>{
+        this.snackBar.openErrSnackbar(err.error.message, 'Ok')
+        
+        this.tokenIsValid = false
+        return false
+      }
+    )
    
-      this.tokenIsValid = false
-      return false
-    }
+
 
   }
 
@@ -81,6 +96,10 @@ export class ResetPasswordComponent implements OnInit , OnDestroy{
             }
             else if (res.type === HttpEventType.Response) {
               this.uploadProgress = false
+              console.log(this.token)
+              this.forgotPasswordService.addToken(this.token).subscribe(
+                (res)=>{console.log(res)}
+              )
               this.navRoute.navigate(['/login'])
               this.tokenIsValid = false
               this.snackBar.openSnackbar(res.body.message, 'Ok', 8000, 'green-snackbar' )

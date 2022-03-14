@@ -30,7 +30,7 @@ export class SnackbarService {
 
   openSuccessSnackbar(mssg, action){
     this.snackBar.open(mssg, action, {
-      duration: 2000,
+      duration: 3000,
       panelClass: 'green-snackbar',
       horizontalPosition: 'center',
       verticalPosition: 'top'

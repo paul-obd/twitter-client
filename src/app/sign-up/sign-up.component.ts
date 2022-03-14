@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   constructor(private toolbarService:ToolbarService,private route: Router, private formBuilder: FormBuilder, private authService: AuthService, private snackBar: SnackbarService) { }
   ngOnDestroy(): void {
-    this.toolbarService.inLogInOrSignUp = false
+    this.toolbarService.inLogInOrSignUpOrConfirmEmail = false
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
   
   hideToolbarTabs(){
-    this.toolbarService.inLogInOrSignUp = true
+    this.toolbarService.inLogInOrSignUpOrConfirmEmail = true
 
  }
 
