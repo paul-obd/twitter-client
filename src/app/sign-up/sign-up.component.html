@@ -1,5 +1,5 @@
 <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
-<form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+<form *ngIf="!signedUp" [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Enter E-mail</mat-label>
@@ -34,3 +34,11 @@
  
     <h3>Already a member? <a [routerLink]="[ '/login' ]"> LogIn</a></h3>
 </form>
+
+<div *ngIf="signedUp" class="center">
+    <h1>Check your email {{signUpForm.get('email').value}} To verify Your account.</h1>
+    <h1 class="note">Note: Check your spam emails!</h1>
+    <p *ngIf="seconds != 0 ">Resend Email after {{seconds}}</p>
+    <button (click)="resendConfrmationEmail()" *ngIf="seconds == 0 && !uploadProgress" mat-raised-button>Resend Email</button>
+    <button disabled *ngIf="seconds != 0 || uploadProgress" mat-raised-button>Resend Email</button>
+</div>

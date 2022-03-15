@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
 <div *ngIf="tokenNotValid" class="center">
     <h1 *ngIf="notSignedIn">
         You Are Not a Registered User! Please <a [routerLink]="[ '/signup' ]">SignUp</a>
@@ -6,6 +7,10 @@
         <h1>
             This link is not available anymore
         </h1>
-        <button mat-raised-button color="primary" (click)="sendVerificationLink()">Resend Me a New Confirmation link</button>
+        <h1 *ngIf="clicked" class="note">Note: Check your spam emails!</h1>
+        <p *ngIf="seconds != 0 ">Resend Email after {{seconds}}</p>
+        <button *ngIf="seconds == 0 && !uploadProgress" mat-raised-button color="primary" (click)="sendVerificationLink()">Resend Me a New Confirmation link</button>
+        <button disabled *ngIf="seconds != 0 || uploadProgress" mat-raised-button color="primary" (click)="sendVerificationLink()">Resend Me a New Confirmation link</button>
     </div>
 </div>
+

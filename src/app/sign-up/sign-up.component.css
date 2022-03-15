@@ -6,10 +6,20 @@ form {
     margin-top: 10%;
 }
 
+.note{
+    color: red;
+}
 
 @media screen and (max-width: 768px) {
     form {
 
         margin-top: 30%;
+    }
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 10% !important;
     }
 }

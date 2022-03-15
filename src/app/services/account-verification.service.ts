@@ -16,6 +16,13 @@ export class AccountVerificationService {
     return this.http.put(this.PORT+ 'user/confirm-email/'+ userId, {})
   }
 
+  reSendConfirmationCode(email){
+    return this.http.post(this.PORT+ 'user/re-send-confirmation-email/'+ email, {},{
+      reportProgress: true,
+      observe: 'events'
+    })
+  }
+
   decodeToken(token) {
     const helper = new JwtHelperService();
     this.decodedToken = helper.decodeToken(token);
