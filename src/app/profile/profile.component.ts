@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tweet } from '../models/tweet.model';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
@@ -20,11 +21,11 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   userPassword: string;
   userPosts: Tweet[] = [];
   currentUserName: string 
-
+  spin: boolean = false
 
 
   
-  constructor(public authService: AuthService,private tweetService: TweetService, private snackbar: SnackbarService, private toolbarService: ToolbarService) { }
+  constructor(public authService: AuthService,private tweetService: TweetService, private snackbar: SnackbarService, private toolbarService: ToolbarService, private route: Router) { }
 
 
   ngOnDestroy(): void {
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.spin = true
     this.toolbarService.inProfile = true
 
   }
@@ -57,13 +59,20 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
           this.authService.userPosts.push(post)
           
         });
+        this.spin = false
 
       },
       (err) => {
         this.snackbar.openErrSnackbar(err.error.message, 'Ok')
-
+        this.spin = false
       }
     )
+  }
+
+  logout(){
+    this.authService.logOut()
+    this.route.navigate(['/login'])
+    
   }
 
 }

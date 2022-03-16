@@ -1,5 +1,5 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
@@ -22,6 +22,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
   signedUp: boolean = false;
   seconds: number = 0
 
+  passIsVisible: boolean = false
+  rePassIsVisible: boolean = false
+
+  @ViewChild('passwordInput') passwordInput!: ElementRef<any>;
+  @ViewChild('rePasswordInput') rePasswordInput!: ElementRef<any>;
+
   constructor(private toolbarService:ToolbarService,private route: Router, private formBuilder: FormBuilder, private authService: AuthService, private snackBar: SnackbarService, private accountVerificationService: AccountVerificationService) { }
   ngOnDestroy(): void {
     this.toolbarService.inLogInOrSignUpOrConfirmEmail = false
@@ -39,6 +45,26 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
  }
 
+   passwordVisibilty(){
+    if (this.passwordInput.nativeElement.type === "password") {
+      this.passIsVisible = true
+      this.passwordInput.nativeElement.type = "text";
+    } else {
+      this.passIsVisible = false
+      this.passwordInput.nativeElement.type = "password";
+    }
+
+  }
+   rePasswordVisibilty(){
+    if (this.rePasswordInput.nativeElement.type === "password") {
+      this.rePassIsVisible = true
+      this.rePasswordInput.nativeElement.type = "text";
+    } else {
+      this.rePassIsVisible = false
+      this.rePasswordInput.nativeElement.type = "password";
+    }
+
+  }
  
  resendEmailValidator() {
   this.seconds = 59

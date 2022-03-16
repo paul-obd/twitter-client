@@ -77,7 +77,7 @@ export class ActivateUserEmailComponent implements OnInit, OnDestroy {
   sendVerificationLink() {
     this.token = this.activatedRoute.snapshot.params.token
     this.accountVerification.decodeToken(this.token)
-    this.accountVerification.reSendConfirmationCode(this.accountVerification.decodedToken.userId).subscribe(
+    this.accountVerification.reSendConfirmationCode(this.accountVerification.decodedToken.email).subscribe(
       (res: HttpEvent<{ message, user }>) => {
 
         if (res.type === HttpEventType.UploadProgress) {

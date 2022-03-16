@@ -27,6 +27,7 @@ import { ToolbarService } from './services/toolbar.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ActivateUserEmailComponent } from './activate-user-email/activate-user-email.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ActivateUserEmailComponent } from './activate-user-email/activate-user-
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    InfiniteScrollModule
   ],
   providers: [TweetService, AuthService, AuthGuardService,LogInAuthGuardService, ToolbarService ],
   bootstrap: [AppComponent]

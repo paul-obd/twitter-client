@@ -1,9 +1,10 @@
-<div class="center-specific">
-    <app-post *ngFor="let tweet of tweets" 
-    [id]="tweet._id"
-    [creatorUsername]="tweet.creator.userName"
-    [imgUrl]="tweet.imageUrl"
-    [content]="tweet.content"
-    [title]="tweet.title"
-   ></app-post>
+<div class="center-specific search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+    <div *ngIf="spin" class="spinner center">
+        <mat-spinner ></mat-spinner>
+    </div>
+    <div *ngIf="!spin">
+        <app-post *ngFor="let tweet of tweets" [id]="tweet._id" [creatorUsername]="tweet.creator.userName"
+            [imgUrl]="tweet.imageUrl" [content]="tweet.content" [title]="tweet.title"></app-post>
+    </div>
 </div>

@@ -4,7 +4,7 @@
 
         <span class="example-spacer"></span>
 
-        <button *ngIf="creatorUsername === currentUserName" mat-icon-button [matMenuTriggerFor]="menu">
+        <button *ngIf="creatorUsername === currentUserName" mat-icon-button [disableRipple]="true" [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -23,8 +23,8 @@
     <div class="img" *ngIf="imgUrl" [ngStyle]="{ 'background-image': 'url(' + PORT + imgUrl + ')'}"></div>
     <mat-divider></mat-divider>
     <mat-card-content>
-        <h2>{{title}}.</h2>
-        <p>{{content}}.</p>
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
     </mat-card-content>
 
 </mat-card>

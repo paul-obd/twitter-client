@@ -1,4 +1,4 @@
-<div class="center-specific">
+<div  *ngIf="!spin"  class="center-specific">
     <div class="profile-header">
         <div class="details">
             <h3 class="userName">
@@ -8,14 +8,19 @@
                 {{userEmail}}
             </h3>
         </div>
-        <div class="qr">
+        <div class="logout">
+            <button (click)="logout()" mat-stroked-button color="warn">Logout</button>
 
         </div>
     </div>
     <mat-divider></mat-divider>
+
     <div class="posts">
         <app-post *ngFor="let tweet of authService.userPosts" [id]="tweet._id" [creatorUsername]="userName"
             [imgUrl]="tweet.imageUrl" [content]="tweet.content" [title]="tweet.title"></app-post>
     </div>
+</div>
+<div *ngIf="spin" class="spinner center">
+    <mat-spinner ></mat-spinner>
 </div>
 

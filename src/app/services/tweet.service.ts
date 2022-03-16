@@ -13,10 +13,10 @@ export class TweetService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getTweets() {
+  getTweets(page: any) {
     this.authService.loadTokenAndUser()
     
-    return this.http.get(this.PORT + 'posts/all-posts',{ headers: {'Authorization': this.authService.authToken}})
+    return this.http.get(this.PORT + 'posts/all-posts?page='+ page,{ headers: {'Authorization': this.authService.authToken}})
   }
 
   getOneTweet(tweetId: string){

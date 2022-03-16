@@ -1,5 +1,5 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   clicked: boolean = false
   uploadProgress: boolean = false
+  passIsVisible: boolean = false
+
+  @ViewChild('passwordInput') passwordInput!: ElementRef<any>;
+
 
   constructor(private toolbarService:ToolbarService,private route: Router,private authService: AuthService, private formBuilder: FormBuilder, private snackbar: SnackbarService) { }
   ngOnDestroy(): void {
@@ -33,6 +37,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   hideToolbarTabs(){
      this.toolbarService.inLogInOrSignUpOrConfirmEmail = true
+
+  }
+
+  passwordVisibilty(){
+    if (this.passwordInput.nativeElement.type === "password") {
+      this.passIsVisible = true
+      this.passwordInput.nativeElement.type = "text";
+    } else {
+      this.passIsVisible = false
+      this.passwordInput.nativeElement.type = "password";
+    }
 
   }
 

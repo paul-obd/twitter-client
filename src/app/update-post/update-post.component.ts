@@ -20,6 +20,8 @@ export class UpdatePostComponent implements OnInit {
   uploadProgress: boolean = false
   notclicked: boolean = true
   removedImage: string;
+  spin: boolean = false
+  loadSpin: boolean = false
 
   PORT = "http://localhost:3000/"
 
@@ -34,6 +36,7 @@ export class UpdatePostComponent implements OnInit {
   }
 
   getTheTweet(){
+    this.loadSpin = true
     this.tweetId = this.activatedRoute.snapshot.params.id
     this.tweetService.getOneTweet(this.tweetId).subscribe(
       (res: Tweet) => {
@@ -42,7 +45,8 @@ export class UpdatePostComponent implements OnInit {
           this.tweetImg = res.imageUrl
         }
         this.tweetForm.get('title').setValue(res.title)
-        this.tweetForm.get('content').setValue(res.content)       
+        this.tweetForm.get('content').setValue(res.content)   
+        this.loadSpin = false    
       }
     )
   }
@@ -57,11 +61,16 @@ export class UpdatePostComponent implements OnInit {
 
   onFileSelected(event){
 
+    this.spin = true
     const file = event.target.files[0];
     if (file) {
       this.tweetForm.get('image').setValue(file);
       const reader = new FileReader();
-      reader.onload = e => this.slectedImg = e.target.result;
+      reader.onload = e =>{ 
+        
+        this.slectedImg = e.target.result
+        this.spin = false
+      };
 
       reader.readAsDataURL(file);
     }

@@ -19,6 +19,7 @@ export class PostTweetComponent implements OnInit, OnDestroy {
   imageSrc: string | ArrayBuffer;
   uploadProgress: boolean = false
   notclicked: boolean = true
+  spin: boolean = false
 
   constructor(private route: Router,private formBuilder: FormBuilder, private tweetService: TweetService, private snackBar: SnackbarService, private toolbarService: ToolbarService) { }
   ngOnDestroy(): void {
@@ -28,7 +29,6 @@ export class PostTweetComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.toolbarService.inAddTweet = true
     this.tweetFormInit()
-    
   }
 
   tweetFormInit() {
@@ -41,15 +41,21 @@ export class PostTweetComponent implements OnInit, OnDestroy {
 
 
   onFileSelected(event) {
-
+  
+    this.spin = true
     const file = event.target.files[0];
     if (file) {
       this.tweetForm.get('image').setValue(file);
       const reader = new FileReader();
-      reader.onload = e => this.imageSrc = e.target.result;
+      reader.onload = e => {
+        this.imageSrc = e.target.result
+        this.spin = false
+      };
 
       reader.readAsDataURL(file);
+      
     }
+    
 
   }
 
@@ -57,6 +63,7 @@ export class PostTweetComponent implements OnInit, OnDestroy {
   removeImage() {
     this.imageSrc = null
     this.tweetForm.get('image').setValue(null);
+    
   }
 
 

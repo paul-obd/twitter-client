@@ -11,8 +11,9 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Enter Password</mat-label>
-            <input type="password" formControlName="logInpassword" matInput placeholder="min. length is 6">
-
+            <input #passwordInput type="password" formControlName="logInpassword" matInput placeholder="min. length is 6">
+            <mat-icon (click)="passwordVisibilty()" *ngIf="passIsVisible" matSuffix>visibility</mat-icon>
+            <mat-icon (click)="passwordVisibilty()" *ngIf="!passIsVisible" matSuffix>visibility_off</mat-icon>
         </mat-form-field>
     </p>
 

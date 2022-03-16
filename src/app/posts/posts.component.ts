@@ -12,17 +12,35 @@ import { TweetService } from '../services/tweet.service';
 export class PostsComponent implements OnInit {
 
   tweets: any[] = []
+  scrollNumber = 1
+  spin: boolean = false
 
   constructor(private tweetService: TweetService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.spin = true
+    this.tweetService.getTweets(this.scrollNumber).subscribe(
+      (res: any[])=>{
+       res.forEach(tweet=>{
+         this.tweets.push(tweet)
+       })
+       this.spin = false
+       this.scrollNumber += 1   
+          
+      })
+  }
+
+  onScroll(){
     this.getAllTweets()
   }
 
   getAllTweets(){
-    this.tweetService.getTweets().subscribe(
+    this.tweetService.getTweets(this.scrollNumber).subscribe(
       (res: any[])=>{
-       this.tweets = res   
+       res.forEach(tweet=>{
+         this.tweets.push(tweet)
+       })
+       this.scrollNumber += 1   
           
       })
   }
