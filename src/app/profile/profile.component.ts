@@ -70,8 +70,9 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   logout(){
-    this.authService.logOut()
-    this.route.navigate(['/login'])
+    if(confirm('Are you sure you want to logout?'))
+      this.authService.logOut()
+      this.route.navigate(['/login'])
     
   }
 

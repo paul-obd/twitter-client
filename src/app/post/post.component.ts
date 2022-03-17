@@ -17,6 +17,7 @@ export class PostComponent implements OnInit {
   @Input() imgUrl?: string
   @Input() content: string
   @Input() title: string
+  @Input() date: Date
 
   currentUserName: string
 

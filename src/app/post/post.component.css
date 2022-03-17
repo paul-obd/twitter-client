@@ -16,6 +16,10 @@
    vertical-align: top !important;
    margin-top: 0%;
 }
+.date{
+    color: rgb(48, 155, 190) !important;
+    margin-top: 8% !important;
+}
 
 .card-header{
     display: flex;

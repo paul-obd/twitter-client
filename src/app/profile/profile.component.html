@@ -14,10 +14,13 @@
         </div>
     </div>
     <mat-divider></mat-divider>
+    <div *ngIf="authService.userPosts.length === 0" class="no-posts center">
+        <h1>No Tweets Yet</h1>
+    </div>
 
-    <div class="posts">
+    <div *ngIf="authService.userPosts.length != 0" class="posts">
         <app-post *ngFor="let tweet of authService.userPosts" [id]="tweet._id" [creatorUsername]="userName"
-            [imgUrl]="tweet.imageUrl" [content]="tweet.content" [title]="tweet.title"></app-post>
+         [date]="tweet.createdAt"   [imgUrl]="tweet.imageUrl" [content]="tweet.content" [title]="tweet.title"></app-post>
     </div>
 </div>
 <div *ngIf="spin" class="spinner center">
